@@ -281,8 +281,21 @@ function isContainNumber(num, digit) {
  *  [2, 3, 9, 5] => 2       => 2 + 3 === 5 then balance element is 9 and its index = 2
  *  [1, 2, 3, 4, 5] => -1   => no balance element
  */
-function getBalanceIndex(/* arr */) {
-  throw new Error('Not implemented');
+function getBalanceIndex(arr) {
+  for (let i = 1; i < arr.length; i += 1) {
+    let a1 = 0;
+    let a2 = 0;
+    for (let j = 0; j < i; j += 1) {
+      a1 += arr[j];
+    }
+    for (let h = i + 1; h < arr.length; h += 1) {
+      a2 += arr[h];
+    }
+    if (a1 === a2) {
+      return i;
+    }
+  }
+  return -1;
 }
 
 /**
@@ -364,8 +377,18 @@ function sortByAsc(/* arr */) {
  *  '012345', 3 => '024135' => '043215' => '031425'
  *  'qwerty', 3 => 'qetwry' => 'qtrewy' => 'qrwtey'
  */
-function shuffleChar(/* str, iterations */) {
-  throw new Error('Not implemented');
+function shuffleChar(str, i) {
+  let res = str;
+  for (let j = 0; j < i % 6 ** 3; j += 1) {
+    let odd = '';
+    let even = '';
+    for (let h = 0; h < str.length; h += 2) {
+      odd += res[h];
+      even += res[h + 1];
+    }
+    res = odd + even;
+  }
+  return res;
 }
 
 /**
